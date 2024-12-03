@@ -3,43 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honest Reflections on the Holidays</title>
+    <title>Unwrapping the Truth: Holiday Reflections</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            background-color: #001f3f;
+            color: #fff;
+            overflow: hidden;
         }
         header {
-            background-color: #333;
+            background: linear-gradient(45deg, #ff0000, #ff4500, #ff6347);
             color: #fff;
-            padding: 10px 20px;
+            padding: 20px;
             text-align: center;
+            text-transform: uppercase;
+            font-size: 2rem;
+            animation: glow 2s infinite alternate;
         }
         main {
             padding: 20px;
             max-width: 800px;
             margin: 20px auto;
-            background: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
             border-radius: 10px;
+            z-index: 1;
+            position: relative;
         }
         h1, h2 {
-            color: #333;
+            color: #ff6347;
+        }
+        h2 {
+            animation: glow 3s infinite alternate;
+        }
+        p {
+            line-height: 1.6;
         }
         footer {
             text-align: center;
             padding: 10px;
-            background-color: #333;
+            background-color: #111;
+            color: #ff6347;
+        }
+        .snow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .snowflake {
+            position: absolute;
+            top: -10px;
             color: #fff;
-            margin-top: 20px;
+            font-size: 1em;
+            animation: fall 10s linear infinite, sway 2s ease-in-out infinite;
+            opacity: 0.8;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        @keyframes sway {
+            50% {
+                transform: translateX(20px);
+            }
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500, 0 0 20px #ff6347;
+            }
+            100% {
+                text-shadow: 0 0 20px #ff4500, 0 0 30px #ff6347, 0 0 50px #ff6347;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Unwrapping the Truth: Reflections on Holiday Spirit</h1>
+        <h1>Unwrapping the Truth</h1>
     </header>
     <main>
         <h2>Why Christmas Spirit Doesn't Add Up</h2>
@@ -58,5 +105,26 @@
     <footer>
         <p>&copy; 2024 Honest Reflections. All Rights Reserved.</p>
     </footer>
+
+    <div class="snow">
+        <!-- Snowflakes -->
+    </div>
+
+    <script>
+        // Create snowfall effect
+        const snowContainer = document.querySelector('.snow');
+        const createSnowflake = () => {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            snowflake.textContent = '❄';
+            snowContainer.appendChild(snowflake);
+
+            // Remove snowflake after animation
+            setTimeout(() => snowflake.remove(), 10000);
+        };
+        setInterval(createSnowflake, 100);
+    </script>
 </body>
 </html>
